@@ -30,7 +30,7 @@ public class ChatbotView
 		 *
 		 * @param
 		 */
-		result = JOptionPane.showInputDialog(null, baseController.getMySillyChatbot() + "say" + currentInput);
+		result = JOptionPane.showInputDialog(null, baseController.getMySillyChatbot().getName() + "say" + currentInput);
 
 		return result;
 	}
