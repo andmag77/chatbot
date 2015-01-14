@@ -13,7 +13,7 @@ public class Chatbot
 	private ArrayList<String> memeList;
 	private String name;
 	private int numberOfChats;
-
+	private Chatbot mySillyChatbot;
 	private chatbotUser myUser;
 
 	private ArrayList<String> userInputList;
@@ -31,6 +31,13 @@ public class Chatbot
 	public String getName()
 	{
 		return name;
+	}
+	
+	public int updateChatCount()
+	{
+		numberOfChats++;
+		
+		return numberOfChats;
 	}
 
 	public int getNumberOfChats()
@@ -65,16 +72,43 @@ public class Chatbot
 	public String processText(String currentInput)
 	{
 		String result = "";
-		if (chatCounter() < 5)
+		if (numberOfChats == 0)
 		{
-			result = introduceUser(currentInput);
+			myUser.setUserName(currentInput);
 		}
 
-		int randomPosition = (int) (Math.random() * 6);
-
-		if (currentInput != null && currentInput.length() > 0)
+		if (numberOfChats == 1)
 		{
-			result = randumChat(currentInput);
+			result = "Hello there " + myUser.getUserName() + ". How old are YOU??????";
+			myUser.setAge(c);
+		}
+		else if (numberOfChats == 2)
+		{
+
+		}
+		else if (numberOfChats == 3)
+		{
+
+		}
+		else if (numberOfChats == 4)
+		{
+
+		}
+
+		else if (numberOfChats >= 5)
+		{
+
+			int randomPosition = (int) (Math.random() * 6);
+
+			if (currentInput != null && currentInput.length() > 0)
+			{
+				result = randumChat(currentInput);
+			}
+			updateChatCount();
+		}
+		else
+		{
+			result = "Pankakes";
 		}
 
 		return result;
@@ -170,10 +204,10 @@ public class Chatbot
 	private String noMashingDected(String input)
 	{
 		String noMashing = " Thank you for not massing you don't know how good that makes me feel";
-if(input.length() > 0)
-{
-		noMashing += input.substring(input.length() / 3, input.length() / 2);
-}
+		if (input.length() > 0)
+		{
+			noMashing += input.substring(input.length() / 3, input.length() / 2);
+		}
 		return noMashing;
 	}
 
@@ -197,24 +231,24 @@ if(input.length() > 0)
 		return isMashing;
 	}
 
-	private String introduceUser(String input)
-	{
-		String userQuestion = "";
-		// you will need ifs or a switch
-		if (chatCounter() == 0)
-		{
-			myUser.setUserName(input);
-			userQuestion = "good name" + myUser.getUserName() + " how old are you?";
-
-		}
-		else if (numberOfChats == 1)
-		{
-			int userAge = Integer.parseInt(input);
-			myUser.setAge(userAge);
-		}
-		// continue for other user info fields
-		return userQuestion;
-	}
+//	private String introduceUser(String input)
+//	{
+//		String userQuestion = "";
+//		// you will need ifs or a switch
+//		if (chatCounter() == 0)
+//		{
+//			myUser.setUserName(input);
+//			userQuestion = "good name" + myUser.getUserName() + " how old are you?";
+//
+//		}
+//		else if (numberOfChats == 1)
+//		{
+//			int userAge = Integer.parseInt(input);
+//			myUser.setAge(userAge);
+//		}
+//		// continue for other user info fields
+//		return userQuestion;
+//	}
 
 	private boolean userInputChecker(String userInput)
 	{
